@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, FlatList, Image, StyleSheet } from 'react-native';
+import { View, Text, TextInput, Button, FlatList, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { useTheme } from '@react-navigation/native';
 import axios from 'axios';
 
@@ -34,13 +34,19 @@ const JikanScreen = ({ navigation }) => {
         data={animeList}
         keyExtractor={(item) => item.mal_id.toString()}
         renderItem={({ item }) => (
-          <View style={[styles.itemContainer, { backgroundColor: colors.card }]}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('DetailsScreen', {
+              title: item.title,
+              synopsis: item.synopsis,
+            })}
+            style={[styles.itemContainer, { backgroundColor: colors.card }]}
+          >
             <Image source={{ uri: item.images.jpg.image_url }} style={styles.image} />
             <View style={styles.textContainer}>
               <Text style={[styles.animeTitle, { color: colors.text }]}>{item.title}</Text>
               <Text style={{ color: colors.text }}>Score: {item.score || 'N/A'}</Text>
             </View>
-          </View>
+          </TouchableOpacity>
         )}
       />
     </View>

@@ -7,6 +7,7 @@ import AppNavigator from './src/navigation/AppNavigator';
 import OpenLibraryScreen from './src/screens/OpenLibraryScreen';
 import JikanScreen from './src/screens/JikanScreen';
 import LoginScreen from './src/screens/LoginScreen';
+import DetailsScreen from './src/screens/DetailsScreen'; // Importa a nova tela de detalhes
 
 const Stack = createStackNavigator();
 
@@ -28,6 +29,7 @@ export default function App() {
         <Stack.Screen name="OpenLibrary" component={OpenLibraryScreen} options={{ title: 'Livros' }} />
         <Stack.Screen name="Jikan" component={JikanScreen} options={{ title: 'Animes' }} />
         <Stack.Screen name="Login" component={LoginScreen} options={{ title: 'Login' }} />
+        <Stack.Screen name="DetailsScreen" component={DetailsScreen} options={{ title: 'Detalhes' }} />
       </Stack.Navigator>
       <View style={{ position: 'absolute', top: 40, right: 20 }}>
         <Button
@@ -38,3 +40,4 @@ export default function App() {
     </NavigationContainer>
   );
 }
+
